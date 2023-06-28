@@ -12,5 +12,7 @@ jobs:
     steps:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag nodehello:latest
-           docker run -itd --name nodetest -p 3000:3000 nodehello:latest
-           sleep 5 && curl localhost:3000
+    - name: Test the Dockerfile
+      run: docker run -itd --name nodetest -p 3000:3000 nodehello:latest
+    - name: Run the Dockerfile
+      run: sleep 5 && curl localhost:3000
