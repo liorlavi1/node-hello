@@ -1,0 +1,16 @@
+name: Docker Image CI
+
+on:
+ workflow_dispatch:
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag nodehello:latest
+           docker run -itd --name nodetest -p 3000:3000 nodehello:latest
+           sleep 5 && curl localhost:3000
